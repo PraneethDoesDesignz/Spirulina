@@ -1,0 +1,1061 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Spirulina — The Future of Nutrition</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            /* Apple-inspired color palette */
+            --black: #1d1d1f;
+            --gray-dark: #424245;
+            --gray: #86868b;
+            --gray-light: #d2d2d7;
+            --gray-lighter: #f5f5f7;
+            --white: #ffffff;
+            --green-primary: #30d158;
+            --green-light: #34c759;
+            --blue: #007aff;
+            --blue-light: #64d2ff;
+            
+            /* Responsive spacing */
+            --spacing-xs: 8px;
+            --spacing-sm: 12px;
+            --spacing-md: 16px;
+            --spacing-lg: 24px;
+            --spacing-xl: 32px;
+            --spacing-2xl: 48px;
+            --spacing-3xl: 64px;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
+            background: var(--white);
+            color: var(--black);
+            overflow: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            touch-action: pan-y;
+        }
+        
+        /* Print styles */
+        @media print {
+            body {
+                overflow: visible;
+            }
+            
+            .slideshow-container {
+                height: auto;
+            }
+            
+            .slide {
+                display: block !important;
+                page-break-after: always;
+                page-break-inside: avoid;
+                height: 100vh;
+                padding: 60px;
+                animation: none !important;
+            }
+            
+            .navigation,
+            .slide-counter,
+            .keyboard-hint,
+            .progress-indicator {
+                display: none !important;
+            }
+        }
+        
+        .slideshow-container {
+            position: relative;
+            height: 100vh;
+            height: 100dvh; /* Dynamic viewport height for mobile */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        
+        .slide {
+            display: none;
+            padding: var(--spacing-2xl) var(--spacing-lg);
+            text-align: center;
+            width: 100%;
+            max-width: 1200px;
+            animation: fadeIn 0.6s ease-out;
+            position: relative;
+            margin: 0 auto;
+            overflow-y: auto;
+            max-height: calc(100vh - 120px);
+            max-height: calc(100dvh - 120px);
+        }
+        
+        .slide.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { 
+                opacity: 0; 
+                transform: translateY(30px);
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0);
+            }
+        }
+        
+        /* Typography - Responsive */
+        h1 {
+            font-size: clamp(48px, 10vw, 96px);
+            font-weight: 700;
+            letter-spacing: -0.015em;
+            line-height: 1.05;
+            margin-bottom: var(--spacing-lg);
+            background: linear-gradient(180deg, var(--black) 0%, var(--gray-dark) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        h2 {
+            font-size: clamp(32px, 7vw, 64px);
+            font-weight: 600;
+            letter-spacing: -0.009em;
+            line-height: 1.08;
+            margin-bottom: var(--spacing-xl);
+            color: var(--black);
+        }
+        
+        h3 {
+            font-size: clamp(20px, 4vw, 32px);
+            font-weight: 500;
+            letter-spacing: 0.004em;
+            line-height: 1.2;
+            margin-bottom: var(--spacing-md);
+            color: var(--black);
+        }
+        
+        p {
+            font-size: clamp(16px, 2.5vw, 21px);
+            line-height: 1.47619;
+            font-weight: 400;
+            letter-spacing: -0.022em;
+            color: var(--gray-dark);
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .subtitle {
+            font-size: clamp(18px, 3.5vw, 28px);
+            line-height: 1.14286;
+            font-weight: 400;
+            letter-spacing: 0.007em;
+            color: var(--gray);
+            margin-bottom: var(--spacing-xl);
+        }
+        
+        /* List styles */
+        ul {
+            text-align: left;
+            max-width: 800px;
+            margin: 0 auto;
+            list-style: none;
+            padding: 0 var(--spacing-md);
+        }
+        
+        ul li {
+            font-size: clamp(16px, 2.5vw, 21px);
+            line-height: 1.52381;
+            color: var(--gray-dark);
+            margin-bottom: var(--spacing-sm);
+            padding-left: var(--spacing-lg);
+            position: relative;
+        }
+        
+        ul li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.5em;
+            width: 4px;
+            height: 4px;
+            background: var(--green-primary);
+            border-radius: 50%;
+        }
+        
+        /* Cards and containers */
+        .highlight {
+            background: var(--gray-lighter);
+            padding: var(--spacing-xl) var(--spacing-lg);
+            border-radius: 18px;
+            margin: var(--spacing-xl) 0;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
+            gap: var(--spacing-lg);
+            margin: var(--spacing-xl) 0;
+            padding: 0 var(--spacing-sm);
+        }
+        
+        .stat-card {
+            background: var(--gray-lighter);
+            padding: var(--spacing-xl) var(--spacing-lg);
+            border-radius: 18px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+        }
+        
+        .stat-number {
+            font-size: clamp(36px, 8vw, 72px);
+            font-weight: 700;
+            letter-spacing: -0.015em;
+            background: linear-gradient(180deg, var(--green-primary) 0%, var(--green-light) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: var(--spacing-xs);
+        }
+        
+        .stat-card p {
+            font-size: clamp(14px, 2vw, 19px);
+            color: var(--gray);
+        }
+        
+        /* Benefits grid */
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+            gap: var(--spacing-lg);
+            margin: var(--spacing-xl) 0;
+            padding: 0 var(--spacing-sm);
+        }
+        
+        .benefit-card {
+            background: var(--white);
+            padding: var(--spacing-xl) var(--spacing-lg);
+            border-radius: 18px;
+            text-align: left;
+            border: 1px solid var(--gray-lighter);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .benefit-card:hover {
+            border-color: var(--green-primary);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.06);
+        }
+        
+        .benefit-icon {
+            font-size: clamp(32px, 6vw, 48px);
+            margin-bottom: var(--spacing-md);
+            display: block;
+        }
+        
+        /* Market chart */
+        .market-chart {
+            background: var(--gray-lighter);
+            padding: var(--spacing-xl) var(--spacing-lg);
+            border-radius: 18px;
+            margin: var(--spacing-xl) 0;
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 12px;
+            background: var(--gray-light);
+            border-radius: 6px;
+            overflow: hidden;
+            margin: var(--spacing-md) 0;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: var(--green-primary);
+            border-radius: 6px;
+            transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        /* Navigation */
+        .navigation {
+            position: fixed;
+            bottom: var(--spacing-lg);
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: var(--spacing-md);
+            z-index: 100;
+            width: calc(100% - var(--spacing-2xl));
+            max-width: 400px;
+            justify-content: center;
+        }
+        
+        .nav-btn {
+            padding: var(--spacing-sm) var(--spacing-lg);
+            background: var(--black);
+            color: var(--white);
+            border: none;
+            border-radius: 980px;
+            cursor: pointer;
+            font-size: clamp(14px, 2vw, 17px);
+            font-weight: 500;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+            flex: 1;
+            max-width: 150px;
+            justify-content: center;
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        .nav-btn:hover {
+            transform: scale(1.05);
+            background: var(--gray-dark);
+        }
+        
+        .nav-btn:active {
+            transform: scale(0.98);
+        }
+        
+        .nav-btn:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        /* Slide counter */
+        .slide-counter {
+            position: fixed;
+            top: var(--spacing-lg);
+            right: var(--spacing-lg);
+            font-size: clamp(14px, 2vw, 17px);
+            color: var(--gray);
+            font-weight: 500;
+            z-index: 100;
+        }
+        
+        /* Progress indicator */
+        .progress-indicator {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--gray-lighter);
+            z-index: 101;
+        }
+        
+        .progress-fill-indicator {
+            height: 100%;
+            background: var(--green-primary);
+            transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        /* Keyboard hint - Desktop only */
+        .keyboard-hint {
+            position: fixed;
+            bottom: 100px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 15px;
+            color: var(--gray);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            display: none;
+        }
+        
+        /* Title slide specific */
+        .title-slide {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 60vh;
+            padding: var(--spacing-lg);
+        }
+        
+        .spirulina-icon {
+            font-size: clamp(60px, 15vw, 120px);
+            margin-bottom: var(--spacing-xl);
+            opacity: 0.9;
+        }
+        
+        .hero-subtitle {
+            font-size: clamp(24px, 5vw, 48px);
+            font-weight: 600;
+            letter-spacing: -0.003em;
+            line-height: 1.08333;
+            margin-bottom: var(--spacing-lg);
+            background: linear-gradient(90deg, var(--green-primary) 0%, var(--blue) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        /* Strong text */
+        strong {
+            font-weight: 600;
+            color: var(--black);
+        }
+        
+        /* Section divider */
+        .section-divider {
+            width: 100px;
+            height: 1px;
+            background: var(--gray-light);
+            margin: var(--spacing-xl) auto;
+        }
+        
+        /* Presenter name */
+        .presenter {
+            position: absolute;
+            bottom: var(--spacing-3xl);
+            right: var(--spacing-2xl);
+            font-size: clamp(14px, 2vw, 17px);
+            color: var(--gray);
+            font-weight: 500;
+            letter-spacing: 0.01em;
+        }
+        
+        /* Touch indicator for mobile */
+        .touch-indicator {
+            position: fixed;
+            bottom: 120px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 14px;
+            color: var(--gray);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            display: none;
+        }
+        
+        /* Media Queries */
+        @media (min-width: 768px) {
+            .slide {
+                padding: var(--spacing-3xl) var(--spacing-2xl);
+                max-height: calc(100vh - 160px);
+            }
+            
+            .keyboard-hint {
+                display: block;
+            }
+            
+            .slideshow-container:hover .keyboard-hint {
+                opacity: 1;
+            }
+        }
+        
+        @media (max-width: 767px) {
+            .touch-indicator {
+                display: block;
+            }
+            
+            .slideshow-container:active .touch-indicator {
+                opacity: 1;
+            }
+            
+            .presenter {
+                bottom: var(--spacing-2xl);
+                right: var(--spacing-lg);
+            }
+            
+            /* Adjust grid layouts for mobile */
+            .stats-grid,
+            .benefits-grid {
+                grid-template-columns: 1fr;
+                gap: var(--spacing-md);
+            }
+            
+            /* Ensure cards don't get too tall on mobile */
+            .stat-card,
+            .benefit-card {
+                padding: var(--spacing-lg) var(--spacing-md);
+            }
+            
+            /* Make highlight boxes more compact on mobile */
+            .highlight {
+                padding: var(--spacing-lg) var(--spacing-md);
+            }
+            
+            /* Adjust navigation for very small screens */
+            .navigation {
+                bottom: var(--spacing-md);
+                width: calc(100% - var(--spacing-lg));
+            }
+            
+            .nav-btn {
+                padding: var(--spacing-sm) var(--spacing-md);
+                font-size: 14px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            /* Extra small screens */
+            .slide {
+                padding: var(--spacing-lg) var(--spacing-md);
+            }
+            
+            .title-slide {
+                min-height: 50vh;
+            }
+        }
+        
+        /* Landscape orientation handling */
+        @media (max-height: 500px) and (orientation: landscape) {
+            .slide {
+                padding: var(--spacing-md);
+                max-height: calc(100vh - 80px);
+            }
+            
+            .navigation {
+                bottom: var(--spacing-sm);
+            }
+            
+            .slide-counter {
+                top: var(--spacing-sm);
+                right: var(--spacing-sm);
+            }
+            
+            h1 {
+                font-size: clamp(32px, 8vw, 64px);
+            }
+            
+            h2 {
+                font-size: clamp(24px, 6vw, 48px);
+            }
+        }
+        
+        /* Focus styles for accessibility */
+        button:focus-visible {
+            outline: 2px solid var(--blue);
+            outline-offset: 2px;
+        }
+        
+        /* Prevent text selection on buttons */
+        .nav-btn {
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+        
+        /* Smooth scrolling for slide content */
+        .slide {
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: thin;
+            scrollbar-color: var(--gray-light) transparent;
+        }
+        
+        .slide::-webkit-scrollbar {
+            width: 6px;
+        }
+        
+        .slide::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        
+        .slide::-webkit-scrollbar-thumb {
+            background-color: var(--gray-light);
+            border-radius: 3px;
+        }
+        
+        /* Prevent zoom on double tap */
+        * {
+            touch-action: manipulation;
+        }
+    </style>
+</head>
+<body>
+    <div class="progress-indicator">
+        <div class="progress-fill-indicator" id="progress-indicator"></div>
+    </div>
+    
+    <div class="slideshow-container">
+        <div class="slide-counter">
+            <span id="current-slide">1</span> / <span id="total-slides">12</span>
+        </div>
+
+        <!-- Slide 1: Title -->
+        <div class="slide active">
+            <div class="title-slide">
+                <div class="spirulina-icon">🌿</div>
+                <h1>Spirulina</h1>
+                <p class="hero-subtitle">The Blue-Green Superfood Revolution</p>
+                <div class="section-divider"></div>
+                <p class="subtitle">A comprehensive analysis of technicalities, health benefits,<br>applications, and market potential in India</p>
+            </div>
+        </div>
+
+        <!-- Slide 2: What is Spirulina -->
+        <div class="slide">
+            <h2>What is Spirulina?</h2>
+            <p class="subtitle">Understanding the science behind the superfood</p>
+            <div class="highlight">
+                <h3>Scientific Classification</h3>
+                <ul>
+                    <li><strong>Type:</strong> Cyanobacterium (Blue-green algae)</li>
+                    <li><strong>Species:</strong> Arthrospira platensis & Arthrospira maxima</li>
+                    <li><strong>Shape:</strong> Microscopic spiral-shaped organism</li>
+                    <li><strong>Habitat:</strong> Alkaline lakes and warm climate ponds</li>
+                    <li><strong>Unique Feature:</strong> Photosynthetic bacteria, not true algae</li>
+                </ul>
+            </div>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">3.5B</div>
+                    <p>Years of existence</p>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">0.5mm</div>
+                    <p>Typical length</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 3: Technical Specifications -->
+        <div class="slide">
+            <h2>Technical Specifications</h2>
+            <p class="subtitle">Optimal conditions for cultivation</p>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">60-70%</div>
+                    <p>Protein Content</p>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">pH 8-10</div>
+                    <p>Alkaline Environment</p>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">35-40°C</div>
+                    <p>Growth Temperature</p>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">3-4K lux</div>
+                    <p>Light Intensity</p>
+                </div>
+            </div>
+            <div class="highlight">
+                <h3>Cultivation Requirements</h3>
+                <p>High salinity, intense sunlight, controlled pH, and specific nutrient media ensure optimal growth and maximum nutritional value.</p>
+            </div>
+        </div>
+
+        <!-- Slide 4: Nutritional Profile -->
+        <div class="slide">
+            <h2>Nutritional Powerhouse</h2>
+            <p class="subtitle">Complete nutrition in microscopic form</p>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <span class="benefit-icon">💪</span>
+                    <h3>Complete Protein</h3>
+                    <p>All 9 essential amino acids for optimal muscle synthesis and recovery</p>
+                </div>
+                <div class="benefit-card">
+                    <span class="benefit-icon">🧠</span>
+                    <h3>B-Vitamins Complex</h3>
+                    <p>Rich in B12, B6, thiamine, and riboflavin for neurological health</p>
+                </div>
+                <div class="benefit-card">
+                    <span class="benefit-icon">⚡</span>
+                    <h3>Iron & Minerals</h3>
+                    <p>Bioavailable iron, magnesium, potassium, and essential trace minerals</p>
+                </div>
+                <div class="benefit-card">
+                    <span class="benefit-icon">🛡️</span>
+                    <h3>Antioxidants</h3>
+                    <p>Phycocyanin, chlorophyll, and beta-carotene for cellular protection</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 5: Health Benefits -->
+        <div class="slide">
+            <h2>Health Benefits</h2>
+            <p class="subtitle">Science-backed wellness advantages</p>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <span class="benefit-icon">❤️</span>
+                    <h3>Cardiovascular Health</h3>
+                    <p>Reduces LDL cholesterol and triglycerides while supporting heart function</p>
+                </div>
+                <div class="benefit-card">
+                    <span class="benefit-icon">🩸</span>
+                    <h3>Blood Sugar Control</h3>
+                    <p>Improves insulin sensitivity and helps regulate glucose metabolism</p>
+                </div>
+                <div class="benefit-card">
+                    <span class="benefit-icon">🏃</span>
+                    <h3>Exercise Performance</h3>
+                    <p>Enhances muscle strength, endurance, and post-workout recovery</p>
+                </div>
+                <div class="benefit-card">
+                    <span class="benefit-icon">🦠</span>
+                    <h3>Immune Support</h3>
+                    <p>Boosts immune function and reduces inflammatory markers</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 6: Forms and Usage -->
+        <div class="slide">
+            <h2>Forms & Usage</h2>
+            <p class="subtitle">Versatile consumption options</p>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h3>🥤 Powder Form</h3>
+                    <p>Mix in smoothies, juices, or water for maximum versatility</p>
+                </div>
+                <div class="stat-card">
+                    <h3>💊 Tablets/Capsules</h3>
+                    <p>Convenient, precise dosing with no taste concerns</p>
+                </div>
+                <div class="stat-card">
+                    <h3>🍫 Food Products</h3>
+                    <p>Energy bars, health drinks, and fortified foods</p>
+                </div>
+            </div>
+            <div class="highlight">
+                <h3>Recommended Dosage</h3>
+                <p style="font-size: clamp(20px, 4vw, 28px); color: var(--black); font-weight: 600;">1-10 grams per day</p>
+                <p>Start with 1g and gradually increase based on individual tolerance</p>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 30%;"></div>
+                </div>
+                <p style="font-size: clamp(14px, 2vw, 17px);">Starter: 1-3g • Maintenance: 3-5g • Therapeutic: 5-10g</p>
+            </div>
+        </div>
+
+        <!-- Slide 7: Commercial Applications -->
+        <div class="slide">
+            <h2>Commercial Applications</h2>
+            <p class="subtitle">Diverse industry integration</p>
+            <div style="max-width: 800px; margin: 0 auto;">
+                <div class="highlight" style="text-align: left;">
+                    <ul style="max-width: none;">
+                        <li><strong>Food & Beverage:</strong> Natural coloring, protein fortification, functional foods</li>
+                        <li><strong>Nutraceuticals:</strong> Dietary supplements, health drinks, wellness products</li>
+                        <li><strong>Cosmetics:</strong> Anti-aging creams, hair care products, skin treatments</li>
+                        <li><strong>Animal Feed:</strong> Aquaculture, poultry, livestock nutrition enhancement</li>
+                        <li><strong>Pharmaceutical:</strong> Drug formulations, therapeutic applications</li>
+                        <li><strong>Agriculture:</strong> Bio-fertilizers, soil conditioners</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 8: Production Process -->
+        <div class="slide">
+            <h2>Production Process</h2>
+            <p class="subtitle">From cultivation to market</p>
+            <div class="highlight">
+                <h3>Commercial Cultivation Steps</h3>
+                <ul>
+                    <li><strong>Inoculation:</strong> Starter culture in sterile medium</li>
+                    <li><strong>Growth Phase:</strong> 15-20 days in controlled ponds/bioreactors</li>
+                    <li><strong>Harvesting:</strong> Filtration and concentration</li>
+                    <li><strong>Processing:</strong> Washing, drying, and grinding</li>
+                    <li><strong>Quality Control:</strong> Testing for purity and contamination</li>
+                    <li><strong>Packaging:</strong> Sealed, light-protected containers</li>
+                </ul>
+            </div>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">600-700</div>
+                    <p>kg/month per acre</p>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">90-95%</div>
+                    <p>Protein digestibility</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 9: India Market Size -->
+        <div class="slide">
+            <h2>Indian Market Analysis</h2>
+            <p class="subtitle">Exponential growth trajectory</p>
+            <div class="market-chart">
+                <h3>Market Growth Projection</h3>
+                <div style="margin: var(--spacing-xl) 0;">
+                    <p><strong>Current Market</strong> — Rapidly expanding</p>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 0%;" data-width="35%"></div>
+                    </div>
+                </div>
+                <div style="margin: var(--spacing-xl) 0;">
+                    <p><strong>2035 Projection</strong> — $45.75 Billion</p>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 0%;" data-width="95%"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="stat-card" style="max-width: 400px; margin: var(--spacing-xl) auto;">
+                <div class="stat-number">21.8%</div>
+                <p>Compound Annual Growth Rate</p>
+            </div>
+        </div>
+
+        <!-- Slide 10: India's Global Position -->
+        <div class="slide">
+            <h2>India's Global Leadership</h2>
+            <p class="subtitle">Leading the sustainable nutrition revolution</p>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">#1</div>
+                    <p>Global Exporter</p>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">2,074kg</div>
+                    <p>Export Volume</p>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">$362.1M</div>
+                    <p>APAC Market by 2032</p>
+                </div>
+            </div>
+            <div class="highlight">
+                <h3>Competitive Advantages</h3>
+                <ul>
+                    <li>Ideal climate conditions with year-round sunlight</li>
+                    <li>Low production costs and abundant land</li>
+                    <li>Growing domestic health consciousness</li>
+                    <li>Strong export infrastructure</li>
+                    <li>Government support for sustainable agriculture</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Slide 11: Market Drivers -->
+        <div class="slide">
+            <h2>Key Market Drivers</h2>
+            <p class="subtitle">Forces shaping India's spirulina industry</p>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <span class="benefit-icon">🧘</span>
+                    <h3>Health Consciousness</h3>
+                    <p>Rising awareness about preventive healthcare and natural supplements</p>
+                </div>
+                <div class="benefit-card">
+                    <span class="benefit-icon">🌿</span>
+                    <h3>Traditional Medicine</h3>
+                    <p>Alignment with Ayurvedic principles and superfood acceptance</p>
+                </div>
+                <div class="benefit-card">
+                    <span class="benefit-icon">🌱</span>
+                    <h3>Plant-Based Nutrition</h3>
+                    <p>Growing vegetarian/vegan population seeking protein alternatives</p>
+                </div>
+                <div class="benefit-card">
+                    <span class="benefit-icon">🏭</span>
+                    <h3>Production Efficiency</h3>
+                    <p>Optimal conditions for high-yield, cost-effective farming</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 12: Future Outlook -->
+        <div class="slide">
+            <h2>Future Outlook</h2>
+            <p class="subtitle">Unprecedented opportunities ahead</p>
+            <div class="highlight">
+                <h3>Growth Opportunities</h3>
+                <ul>
+                    <li><strong>Export Expansion:</strong> Leveraging India's #1 global position</li>
+                    <li><strong>Domestic Market:</strong> Increasing local consumption patterns</li>
+                    <li><strong>Technology Integration:</strong> Advanced cultivation and processing methods</li>
+                    <li><strong>Product Innovation:</strong> New applications in food, pharma, and cosmetics</li>
+                    <li><strong>Sustainability Focus:</strong> Eco-friendly production methods</li>
+                </ul>
+            </div>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h3>Key Success Factors</h3>
+                    <p>Quality standardization, effective marketing, sustainable practices</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Market Potential</h3>
+                    <p>Leading the global health and wellness revolution</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="navigation">
+        <button class="nav-btn" id="prevBtn" onclick="changeSlide(-1)">
+            <svg width="7" height="12" viewBox="0 0 7 12" fill="currentColor">
+                <path d="M6 1L1 6l5 5" stroke="currentColor" stroke-width="2" fill="none"/>
+            </svg>
+            Previous
+        </button>
+        <button class="nav-btn" id="nextBtn" onclick="changeSlide(1)">
+            Next
+            <svg width="7" height="12" viewBox="0 0 7 12" fill="currentColor">
+                <path d="M1 11l5-5-5-5" stroke="currentColor" stroke-width="2" fill="none"/>
+            </svg>
+        </button>
+    </div>
+    
+    <div class="keyboard-hint">
+        Use arrow keys or spacebar to navigate
+    </div>
+    
+    <div class="touch-indicator">
+        Swipe to navigate
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+        
+        document.getElementById('total-slides').textContent = totalSlides;
+        
+        function updateProgressIndicator() {
+            const progress = ((currentSlide + 1) / totalSlides) * 100;
+            document.getElementById('progress-indicator').style.width = progress + '%';
+        }
+        
+        function showSlide(n) {
+            slides.forEach(slide => slide.classList.remove('active'));
+            
+            if (n >= totalSlides) currentSlide = 0;
+            if (n < 0) currentSlide = totalSlides - 1;
+            
+            slides[currentSlide].classList.add('active');
+            document.getElementById('current-slide').textContent = currentSlide + 1;
+            
+            // Update navigation buttons
+            document.getElementById('prevBtn').disabled = currentSlide === 0;
+            document.getElementById('nextBtn').disabled = currentSlide === totalSlides - 1;
+            
+            // Update progress indicator
+            updateProgressIndicator();
+            
+            // Reset scroll position for new slide
+            slides[currentSlide].scrollTop = 0;
+            
+            // Animate progress bars when showing market slides
+            if (currentSlide === 8) {
+                setTimeout(() => {
+                    const progressBars = slides[currentSlide].querySelectorAll('.progress-fill');
+                    progressBars.forEach(bar => {
+                        const targetWidth = bar.getAttribute('data-width');
+                        if (targetWidth) {
+                            bar.style.width = targetWidth;
+                        }
+                    });
+                }, 300);
+            }
+        }
+        
+        function changeSlide(direction) {
+            currentSlide += direction;
+            showSlide(currentSlide);
+        }
+        
+        // Keyboard navigation
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'ArrowRight' || event.key === ' ') {
+                if (currentSlide < totalSlides - 1) {
+                    changeSlide(1);
+                }
+            } else if (event.key === 'ArrowLeft') {
+                if (currentSlide > 0) {
+                    changeSlide(-1);
+                }
+            } else if (event.key === 'Home') {
+                currentSlide = 0;
+                showSlide(currentSlide);
+            } else if (event.key === 'End') {
+                currentSlide = totalSlides - 1;
+                showSlide(currentSlide);
+            }
+        });
+        
+        // Touch support for mobile
+        let touchStartX = 0;
+        let touchStartY = 0;
+        let touchEndX = 0;
+        let touchEndY = 0;
+        
+        document.addEventListener('touchstart', e => {
+            touchStartX = e.changedTouches[0].screenX;
+            touchStartY = e.changedTouches[0].screenY;
+        });
+        
+        document.addEventListener('touchend', e => {
+            touchEndX = e.changedTouches[0].screenX;
+            touchEndY = e.changedTouches[0].screenY;
+            handleSwipe();
+        });
+        
+        function handleSwipe() {
+            const swipeThreshold = 50;
+            const verticalThreshold = 100;
+            
+            const deltaX = touchEndX - touchStartX;
+            const deltaY = Math.abs(touchEndY - touchStartY);
+            
+            // Only register horizontal swipes (ignore vertical scrolling)
+            if (deltaY < verticalThreshold) {
+                if (deltaX < -swipeThreshold && currentSlide < totalSlides - 1) {
+                    changeSlide(1);
+                }
+                if (deltaX > swipeThreshold && currentSlide > 0) {
+                    changeSlide(-1);
+                }
+            }
+        }
+        
+        // Initialize
+        showSlide(currentSlide);
+        
+        // Add print functionality
+        window.addEventListener('beforeprint', () => {
+            // Show all slides for printing
+            slides.forEach(slide => {
+                slide.classList.add('active');
+            });
+        });
+        
+        window.addEventListener('afterprint', () => {
+            // Reset to single slide view after printing
+            slides.forEach(slide => {
+                slide.classList.remove('active');
+            });
+            showSlide(currentSlide);
+        });
+        
+        // Prevent double-tap zoom on buttons
+        let lastTouchEnd = 0;
+        document.addEventListener('touchend', function (event) {
+            const now = (new Date()).getTime();
+            if (now - lastTouchEnd <= 300) {
+                event.preventDefault();
+            }
+            lastTouchEnd = now;
+        }, false);
+        
+        // Handle viewport height changes (mobile browser bars)
+        function updateViewportHeight() {
+            const vh = window.innerHeight * 0.01;
+            document.documentElement.style.setProperty('--vh', `${vh}px`);
+        }
+        
+        updateViewportHeight();
+        window.addEventListener('resize', updateViewportHeight);
+        window.addEventListener('orientationchange', updateViewportHeight);
+    </script>
+</body>
+</html>
